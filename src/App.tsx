@@ -1,5 +1,5 @@
-function Button() {
-  return <button>Enviar</button>;
+function Button(props) {
+  return <button>{props.text}</button>;
 }
 
 function App() {
