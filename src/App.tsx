@@ -1,9 +1,9 @@
 interface ButtonProps {
-  text: string;
+  text?: string;
 }
 
 function Button(props: ButtonProps) {
-  return <button>{props.text}</button>;
+  return <button>{props.text ?? "Default"}</button>;
 }
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
     <div>
       <Button text="Enviar" />
       <Button text="Ok" />
+      <Button />
     </div>
   );
 }
