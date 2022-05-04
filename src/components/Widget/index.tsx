@@ -10,7 +10,7 @@ export function Widget() {
 
   return (
     <div className="absolute bottom-5 right-5">
-      <p>Hello World!</p>
+      {isWidgetOpen ? <p>Hello World!</p> : null}
 
       <button
         onClick={toggleWidgetVisibility}
