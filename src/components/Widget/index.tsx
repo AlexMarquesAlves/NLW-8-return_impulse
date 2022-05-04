@@ -12,7 +12,10 @@ export function Widget() {
     <div className="absolute bottom-5 right-5">
       <p>Hello World!</p>
 
-      <button className="flex items-center h-12 px-3 text-white rounded-full bg-brand-500 group ">
+      <button
+        onClick={toggleWidgetVisibility}
+        className="flex items-center h-12 px-3 text-white rounded-full bg-brand-500 group "
+      >
         <ChatTeardropDots className="w-6 h-6" />
       </button>
 
