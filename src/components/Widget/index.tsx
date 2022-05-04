@@ -4,6 +4,10 @@ import { useState } from "react";
 export function Widget() {
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
 
+  function toggleWidgetVisibility() {
+    setIsWidgetOpen(!isWidgetOpen);
+  }
+
   return (
     <div className="absolute bottom-5 right-5">
       <p>Hello World!</p>
