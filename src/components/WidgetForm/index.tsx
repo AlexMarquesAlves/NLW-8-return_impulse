@@ -37,7 +37,18 @@ export function WidgetForm() {
         <CloseButton />
       </header>
 
-      <div className={"flex py-8 gap-2 w-full"}></div>
+      <div className={"flex py-8 gap-2 w-full"}>
+        {Object.entries(feedbackTypes).map(([hey, value]) => {
+          return (
+            <button>
+              <span>
+                <img src={value.image.source} alt={value.image.alt} />
+                {value.title}
+              </span>
+            </button>
+          );
+        })}
+      </div>
 
       <footer className="text-xs text-neutral-400">
         Feito com 💜 por
