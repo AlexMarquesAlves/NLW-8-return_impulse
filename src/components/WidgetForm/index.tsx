@@ -1,16 +1,13 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface WidgetFormProps {
   children: ReactNode;
 }
 
-function WidgetForm({ children }: WidgetFormProps) {
+export function WidgetForm({}: WidgetFormProps) {
   return (
-    <>
-      <h1>WidgetForm</h1>
-      {children}
-    </>
+    <div className="bg-zinc-900 p-4 relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto">
+      Hello World
+    </div>
   );
 }
-
-export default WidgetForm;
