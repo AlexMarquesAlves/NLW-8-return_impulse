@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { feedbackTypes } from "./feedbackTypes";
-import { FeedbackContentStep } from "./Steps/FeedbackContentStep";
-import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
-import { FeedbackSuccessStep } from "./Steps/FeedbackTypeSuccessStep";
+import {
+  FeedbackContentStep,
+  FeedbackSuccessStep,
+  FeedbackTypeStep,
+} from "./Steps";
 
 export type FeedbackTypesProps = keyof typeof feedbackTypes;
 
