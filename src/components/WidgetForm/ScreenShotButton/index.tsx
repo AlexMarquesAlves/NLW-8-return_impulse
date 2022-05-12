@@ -1,6 +1,6 @@
-import { useState } from "react";
 import html2canvas from "html2canvas";
 import { Camera, Eye, Trash } from "phosphor-react";
+import { useState } from "react";
 import { Loading } from "../../Loading";
 
 interface ScreenshotButtonProps {
@@ -28,23 +28,25 @@ export function ScreenshotButton({
   if (screenshot) {
     return (
       <div
-        className="w-10 h-10 bg-blue-400 rounded-md border-transparent flex justify-between items-end text-zinc-400 hover:text-zinc-100  transition overflow-hidden"
+        className="flex items-end justify-between w-10 h-10 overflow-hidden transition bg-blue-400 border-transparent rounded-md text-zinc-400 hover:text-zinc-100"
         style={{
           backgroundImage: `url(${screenshot})`,
           backgroundPosition: "center",
+          // backgroundSize: 180,
           backgroundClip: "content-box",
         }}
       >
         <button
           type="button"
-          className="hover:text-red-400 transition"
+          className="transition hover:text-red-400"
           onClick={() => onScreenshotTook(null)}
         >
           <Trash weight="fill" />
         </button>
+
         <button
           type="button"
-          className="hover:text-blue-300 transition"
+          className="transition hover:text-blue-300"
           // onClick={() => onScreenshotTook('')}
         >
           <Eye weight="fill" />
@@ -56,7 +58,7 @@ export function ScreenshotButton({
   return (
     <button
       type="button"
-      className="p-2 bg-zinc-800 rounded-md border-transparent hover:bg-zinc-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500"
+      className="p-2 transition border-transparent rounded-md bg-zinc-800 hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500"
       onClick={handleTakeScreenshot}
     >
       {isTakingScreenshot ? (
