@@ -1,56 +1,52 @@
-import bugImageUrl from "../../assets/bug.svg";
-import ideaImageUrl from "../../assets/idea.svg";
-import thoughtImageUrl from "../../assets/thought.svg";
-import { CloseButton } from "../CloseButton";
+import { useState } from "react";
+import { feedbackTypes } from "./feedbackTypes";
+import { FeedbackContentStep } from "./Steps/FeedbackContentStep";
+import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
+import { FeedbackSuccessStep } from "./Steps/FeedbackTypeSuccessStep";
 
-const feedbackTypes = {
-  BUG: {
-    title: `Problema`,
-    image: {
-      source: bugImageUrl,
-      alt: "Imagem de um inseto",
-    },
-  },
-  IDEA: {
-    title: `Ideia`,
-    image: {
-      source: ideaImageUrl,
-      alt: "Imagem de uma lampada",
-    },
-  },
-  OTHER: {
-    title: `Outro`,
-    image: {
-      source: thoughtImageUrl,
-      alt: "Imagem de uma nuvem",
-    },
-  },
-};
+export type FeedbackTypesProps = keyof typeof feedbackTypes;
 
 export function WidgetForm() {
-  return (
-    <div className="bg-zinc-900 p-4 relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto">
-      <header>
-        <span className="text-xl leading-6">Deixe seu feedback</span>
-        <CloseButton />
-      </header>
+  const [feedbackType, setFeedbackType] = useState<FeedbackTypesProps | null>(
+    null
+  );
+  const [feedbackSent, setFeedbackSent] = useState(false);
 
-      <div className={"flex py-8 gap-2 w-full"}>
-        {Object.entries(feedbackTypes).map(([hey, value]) => {
-          return (
-            <button>
-              <span>
-                <img src={value.image.source} alt={value.image.alt} />
-                {value.title}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+  function handleRestartFeedback() {
+    setFeedbackSent(false);
+    setFeedbackType(null);
+  }
+
+  return (
+    <div
+      className="bg-zinc-900 p-4
+    relative rounded-2xl mb-4 flex flex-col justify-between
+    items-center shadow-lg w-[calc(100vw-2rem)] h-[280px] md:w-auto"
+    >
+      {feedbackSent ? (
+        <FeedbackSuccessStep
+          onFeedbackRestartRequested={handleRestartFeedback}
+        />
+      ) : (
+        <>
+          {!feedbackType ? (
+            <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType} />
+          ) : (
+            <FeedbackContentStep
+              onFeedbackRestartRequested={handleRestartFeedback}
+              feedbackType={feedbackType}
+              onFeedbackSent={() => setFeedbackSent(true)}
+            />
+          )}
+        </>
+      )}
 
       <footer className="text-xs text-neutral-400">
-        Feito com 💜 por
-        <a href="#" className="underline underline-offset-2">
+        Feito com 💜 por {""}
+        <a
+          className="underline transition underline-offset-2 hover:text-purple-500"
+          href="https://github.com/AlexMarquesAlves"
+        >
           Alex Marquês Alves
         </a>
       </footer>
