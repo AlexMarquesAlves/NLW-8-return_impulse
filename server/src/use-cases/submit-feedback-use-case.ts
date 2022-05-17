@@ -20,6 +20,10 @@ export class SubmitFeedbackUseCase {
       throw new Error("Type is Required");
     }
 
+    if (!comment) {
+      throw new Error("Type is Required");
+    }
+
     if (screenshot && !screenshot.startsWith(`data:image/png;base64`)) {
       throw new Error("Invalid screenshot format.");
     }
