@@ -11,7 +11,7 @@ describe("Submit feedback", () => {
       submitFeedback.execute({
         type: `Bug`,
         comment: `comment example`,
-        screenshot: `example.jpg`,
+        screenshot: `data:image/png;base64,12431j414l1h4`,
       })
     ).resolves.not.toThrow();
   });
