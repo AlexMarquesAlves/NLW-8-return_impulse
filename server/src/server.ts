@@ -10,9 +10,9 @@ app.post("/feedbacks", (req, res) => {
 
   prisma.feedback.create({
     data: {
-      type: type,
-      comment: comment,
-      screenshot: screenshot,
+      type,
+      comment,
+      screenshot,
     },
   });
 
