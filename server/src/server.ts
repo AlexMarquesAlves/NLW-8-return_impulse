@@ -28,6 +28,19 @@ app.post("/feedbacks", async (req, res) => {
     },
   });
 
+  await transport.sendMail({
+    from: `Feedget team <oi@feedget.com>`,
+    to: `Alex Marques Alves <atanaelleonardo@gmail.com>`,
+    subject: `Novo Feedback`,
+    html: [
+      `<div style='font-family:sans-serif; font-size:16px; color:#111; ' >`,
+      `<p>Tipo do feedback: ${type}</p>`,
+      `<p>Comentario: ${comment}</p>`,
+      `<p>Screenshot: ${screenshot}</p>`,
+      `</div>`,
+    ].join("\n"),
+  });
+
   return res.status(201).json({ data: feedback });
 });
 
