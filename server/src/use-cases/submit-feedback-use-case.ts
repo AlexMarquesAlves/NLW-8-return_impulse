@@ -7,11 +7,7 @@ interface SubmitFeedbackUseCaseRequest {
 }
 
 export class SubmitFeedbackUseCase {
-  // private feedbacksRepository: FeedbacksRepository;
-
-  constructor(private feedbacksRepository: FeedbacksRepository) {
-    // this.feedbacksRepository = feedbacksRepository;
-  }
+  constructor(private feedbacksRepository: FeedbacksRepository) {}
 
   async execute(request: SubmitFeedbackUseCaseRequest) {
     const { type, comment, screenshot } = request;
