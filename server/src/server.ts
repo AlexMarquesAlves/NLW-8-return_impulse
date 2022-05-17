@@ -1,11 +1,18 @@
 import express from "express";
+import { prisma } from "./prisma";
 
 const app = express();
 
 app.use(express.json());
 
 app.post("/feedbacks", (req, res) => {
-  console.log(req.body);
+  prisma.feedback.create({
+    data: {
+      type: req.body.type,
+      comment: req.body.comment,
+      screenshot: req.body.screenshot,
+    },
+  });
 
   return res.send(`Hello World `);
 });
