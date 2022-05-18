@@ -20,6 +20,7 @@ describe("Submit feedback", () => {
     ).resolves.not.toThrow();
 
     await expect(createFeedbackSpy).toHaveBeenCalled();
+    await expect(sendMailSpy).toHaveBeenCalled();
   });
 
   // without type
