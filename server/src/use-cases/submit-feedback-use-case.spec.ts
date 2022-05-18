@@ -18,6 +18,8 @@ describe("Submit feedback", () => {
         screenshot: `data:image/png;base64,12431j414l1h4`,
       })
     ).resolves.not.toThrow();
+
+    await expect(createFeedbackSpy).toHaveBeenCalled();
   });
 
   // without type
