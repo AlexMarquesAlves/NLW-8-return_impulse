@@ -37,4 +37,15 @@ describe("Submit feedback", () => {
       })
     ).rejects.toThrow();
   });
+  // invalid screenshot
+  it("Should not be able to submit a feedback with invalid screenshot format", async () => {
+    await expect(
+      submitFeedback.execute({
+        type: `BUG`,
+        comment: ``,
+        screenshot: `invalidFormat.jpg`,
+      })
+    ).rejects.toThrow();
+  });
+  //
 });
